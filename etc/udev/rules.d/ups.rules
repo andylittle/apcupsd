@@ -1,0 +1,6 @@
+#3B1140X14490
+#4B1549P08193
+
+KERNEL=="hiddev*", ATTRS{manufacturer}=="American Power Conversion", ATTRS{serial}=="3B1140X14490", OWNER="root", SYMLINK+="ups-network" 
+
+KERNEL=="hiddev*", ATTRS{manufacturer}=="American Power Conversion", ATTRS{serial}=="4B1549P08193", OWNER="root", SYMLINK+="ups-server"

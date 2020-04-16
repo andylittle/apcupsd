@@ -1,0 +1,10 @@
+[Unit]
+Description=APC UPS TWO Power Control Daemon for Linux
+
+[Service]
+ExecStartPre=-/bin/rm -f /etc/apcupsd/powerfail2
+ExecStart=/sbin/apcupsd -b -f /etc/apcupsd/apc2upsd.conf
+
+[Install]
+WantedBy=multi-user.target
+
