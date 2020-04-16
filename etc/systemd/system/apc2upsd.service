@@ -1,10 +1,16 @@
 [Unit]
-Description=APC UPS TWO Power Control Daemon for Linux
+# network-online is really needed, otherwise there are problems with snmp
+# -> 865620
+After=network-online.target
+Description=UPS 2 power management daemon
+Documentation=man:apcupsd(8)
 
 [Service]
-ExecStartPre=-/bin/rm -f /etc/apcupsd/powerfail2
-ExecStart=/sbin/apcupsd -b -f /etc/apcupsd/apc2upsd.conf
+ExecStartPre=/lib/apcupsd/prestart
+ExecStart=/sbin/apcupsd -f /etc/apcupsd/apc2upsd.conf -P /run/apcupsd2.pid
+Type=forking
+KillMode=process
+PIDFile=/run/apcupsd2.pid
 
 [Install]
 WantedBy=multi-user.target
-
